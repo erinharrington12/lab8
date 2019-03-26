@@ -1,8 +1,8 @@
 
 
 public enum GamePiece {
-	RED_RACER,
-	BLUE_RACER,
+	RED_RACER("Red, racecar", 0),
+	BLUE_RACE,
 	MAGENTA_RACER,
 	RED_THIMBLE,
 	BLUE_BOOT,
