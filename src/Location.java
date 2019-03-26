@@ -1,4 +1,10 @@
-
+/**
+ * 
+ * @author Erin Harrington
+ * 
+ *Enum to represent a location within a house in a board game
+ *
+ */
 public enum Location{
 	KITCHEN,
 	CONSERVATORY,
