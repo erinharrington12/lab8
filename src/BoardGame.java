@@ -1,7 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 public class BoardGame
 {
@@ -38,13 +37,13 @@ public class BoardGame
     public String getPlayerWithGamePiece(GamePiece gamePiece) {
 
         if (playerPieces.containsValue(gamePiece)) {
-            for (String gp : playerPieces.keySet()) {
-                if(playerPieces.get(gp.equals(gamePiece))) {
-                    return gp;
+            for (String key : playerPieces.keySet()) {
+                if(playerPieces.get(key).equals(gamePiece)) {
+                    return key;
                 }
             }
         }
-        
+        return null;
     }
     
     public void movePlayer(String playerName, Location newLocation) {
@@ -64,33 +63,69 @@ public class BoardGame
     public ArrayList<String> getPlayersAtLocation(Location loc){
         ArrayList<String> playersAtLoc = new ArrayList<String>();
         
-        if (playerLocations.containsKey(loc)) {
+        if (playerLocations.containsValue(loc)) {
             for (String pl : playerLocations.keySet()) {
-                
+                if(playerLocations.get(pl).equals(loc)) {
+                    playersAtLoc.add(pl);
+                }
             }
         }
         
         
-        return null;
+        return playersAtLoc;
     }
     
     public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc) {
-        return null;
+        ArrayList<GamePiece> piecesAtLoc = new ArrayList<GamePiece>();
+        
+        if (playerLocations.containsValue(loc)) {
+            for (String key : playerPieces.keySet()) {
+                if(playerPieces.get(key).equals(loc)) {
+                    piecesAtLoc.add(playerPieces.get(key));
+                }
+            }
+        }
+        
+        
+        return piecesAtLoc;
         
     }
     
     public Set<String> getPlayers() {
-        return null;
-        
+ 
+        return playerPieces.keySet();
     }
     
     public Set<Location> getPlayerLocations() {
-        return null;
+       
+        HashSet<Location> playerLocationSet = new HashSet<Location>();
+       
+        for (String key : playerLocations.keySet()) {
+            if (!(playerLocations.keySet().isEmpty())) {
+                playerLocationSet.add(playerLocations.get(key));
+            } 
+        }
+        
+        
+        
+        return playerLocationSet;
         
     }
     
     public Set<GamePiece> getPlayerPieces() {
-        return null;
+       
+        HashSet<GamePiece> playerPieceSet = new HashSet<GamePiece>();
+        
+        
+        for (String key : playerPieces.keySet()) {
+            if (!(playerPieces.keySet().isEmpty())) {
+                playerPieceSet.add(playerPieces.get(key));
+            }
+        }
+        
+        
+        
+        return playerPieceSet;
         
     }
 }
