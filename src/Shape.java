@@ -6,7 +6,7 @@ public enum Shape {
 	RACECAR;
 	
 	public String toString() {
-		return Shape.valueOf(null);
+		return this.name();
 		
 	}
 }
